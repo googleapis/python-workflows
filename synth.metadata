@@ -4,15 +4,15 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-workflows.git",
-        "sha": "ccddf0607d6af58ccf52e33ee1ff735a8034559a"
+        "sha": "7ee5c816a3f85102d1e42e407c622dbb1b2dc4ab"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "520682435235d9c503983a360a2090025aa47cd1",
-        "internalRef": "350246057"
+        "sha": "20712b8fe95001b312f62c6c5f33e3e3ec92cfaf",
+        "internalRef": "354996675"
       }
     },
     {
@@ -156,7 +156,6 @@
     "tests/unit/gapic/executions_v1beta/__init__.py",
     "tests/unit/gapic/executions_v1beta/test_executions.py",
     "tests/unit/gapic/workflows_v1beta/__init__.py",
-    "tests/unit/gapic/workflows_v1beta/test_workflows.py",
-    "workflows-v1beta-py.tar.gz"
+    "tests/unit/gapic/workflows_v1beta/test_workflows.py"
   ]
 }
