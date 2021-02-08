@@ -4,29 +4,29 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-workflows.git",
-        "sha": "1a1d3df8042587954a37ed69f941a542460c1f81"
+        "sha": "639fadf257c4cbc9e3152ba5e78786da28ab07fe"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "dd372aa22ded7a8ba6f0e03a80e06358a3fa0907",
-        "internalRef": "347055288"
+        "sha": "520682435235d9c503983a360a2090025aa47cd1",
+        "internalRef": "350246057"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "373861061648b5fe5e0ac4f8a38b32d639ee93e4"
+        "sha": "778d8beae28d6d87eb01fdc839a4b4d966ed2ebe"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "373861061648b5fe5e0ac4f8a38b32d639ee93e4"
+        "sha": "778d8beae28d6d87eb01fdc839a4b4d966ed2ebe"
       }
     }
   ],
@@ -51,12 +51,14 @@
     }
   ],
   "generatedFiles": [
+    ".coveragerc",
     ".flake8",
     ".github/CONTRIBUTING.md",
     ".github/ISSUE_TEMPLATE/bug_report.md",
     ".github/ISSUE_TEMPLATE/feature_request.md",
     ".github/ISSUE_TEMPLATE/support_request.md",
     ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/header-checker-lint.yml",
     ".github/release-please.yml",
     ".github/snippet-bot.yml",
     ".gitignore",
@@ -103,11 +105,13 @@
     "docs/_static/custom.css",
     "docs/_templates/layout.html",
     "docs/conf.py",
+    "docs/executions_v1beta/executions.rst",
     "docs/executions_v1beta/services.rst",
     "docs/executions_v1beta/types.rst",
     "docs/multiprocessing.rst",
     "docs/workflows_v1beta/services.rst",
     "docs/workflows_v1beta/types.rst",
+    "docs/workflows_v1beta/workflows.rst",
     "google/cloud/workflows/__init__.py",
     "google/cloud/workflows/executions/__init__.py",
     "google/cloud/workflows/executions/py.typed",
