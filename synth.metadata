@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-workflows.git",
-        "sha": "639fadf257c4cbc9e3152ba5e78786da28ab07fe"
+        "sha": "22bf4f1fdaf8bf1781821fc13ca03e1b5745f01f"
       }
     },
     {
