@@ -85,15 +85,17 @@ def test__get_default_mtls_endpoint():
     assert WorkflowsClient._get_default_mtls_endpoint(non_googleapi) == non_googleapi
 
 
-def test_workflows_client_from_service_account_info():
+@pytest.mark.parametrize("client_class", [WorkflowsClient, WorkflowsAsyncClient,])
+def test_workflows_client_from_service_account_info(client_class):
     creds = credentials.AnonymousCredentials()
     with mock.patch.object(
         service_account.Credentials, "from_service_account_info"
     ) as factory:
         factory.return_value = creds
         info = {"valid": True}
-        client = WorkflowsClient.from_service_account_info(info)
+        client = client_class.from_service_account_info(info)
         assert client.transport._credentials == creds
+        assert isinstance(client, client_class)
 
         assert client.transport._host == "workflows.googleapis.com:443"
 
@@ -107,9 +109,11 @@ def test_workflows_client_from_service_account_file(client_class):
         factory.return_value = creds
         client = client_class.from_service_account_file("dummy/file/path.json")
         assert client.transport._credentials == creds
+        assert isinstance(client, client_class)
 
         client = client_class.from_service_account_json("dummy/file/path.json")
         assert client.transport._credentials == creds
+        assert isinstance(client, client_class)
 
         assert client.transport._host == "workflows.googleapis.com:443"
 
@@ -466,6 +470,22 @@ def test_list_workflows_from_dict():
     test_list_workflows(request_type=dict)
 
 
+def test_list_workflows_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = WorkflowsClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(type(client.transport.list_workflows), "__call__") as call:
+        client.list_workflows()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == workflows.ListWorkflowsRequest()
+
+
 @pytest.mark.asyncio
 async def test_list_workflows_async(
     transport: str = "grpc_asyncio", request_type=workflows.ListWorkflowsRequest
@@ -815,6 +835,22 @@ def test_get_workflow_from_dict():
     test_get_workflow(request_type=dict)
 
 
+def test_get_workflow_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = WorkflowsClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(type(client.transport.get_workflow), "__call__") as call:
+        client.get_workflow()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == workflows.GetWorkflowRequest()
+
+
 @pytest.mark.asyncio
 async def test_get_workflow_async(
     transport: str = "grpc_asyncio", request_type=workflows.GetWorkflowRequest
@@ -1011,6 +1047,22 @@ def test_create_workflow(
 
 def test_create_workflow_from_dict():
     test_create_workflow(request_type=dict)
+
+
+def test_create_workflow_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = WorkflowsClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(type(client.transport.create_workflow), "__call__") as call:
+        client.create_workflow()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == workflows.CreateWorkflowRequest()
 
 
 @pytest.mark.asyncio
@@ -1221,6 +1273,22 @@ def test_delete_workflow_from_dict():
     test_delete_workflow(request_type=dict)
 
 
+def test_delete_workflow_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = WorkflowsClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(type(client.transport.delete_workflow), "__call__") as call:
+        client.delete_workflow()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == workflows.DeleteWorkflowRequest()
+
+
 @pytest.mark.asyncio
 async def test_delete_workflow_async(
     transport: str = "grpc_asyncio", request_type=workflows.DeleteWorkflowRequest
@@ -1405,6 +1473,22 @@ def test_update_workflow(
 
 def test_update_workflow_from_dict():
     test_update_workflow(request_type=dict)
+
+
+def test_update_workflow_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = WorkflowsClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(type(client.transport.update_workflow), "__call__") as call:
+        client.update_workflow()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == workflows.UpdateWorkflowRequest()
 
 
 @pytest.mark.asyncio
