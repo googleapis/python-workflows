@@ -15,18 +15,18 @@
 # limitations under the License.
 #
 
-from google.cloud.workflows_v1beta.services.workflows.async_client import (
+from google.cloud.workflows_v1.services.workflows.async_client import (
     WorkflowsAsyncClient,
 )
-from google.cloud.workflows_v1beta.services.workflows.client import WorkflowsClient
-from google.cloud.workflows_v1beta.types.workflows import CreateWorkflowRequest
-from google.cloud.workflows_v1beta.types.workflows import DeleteWorkflowRequest
-from google.cloud.workflows_v1beta.types.workflows import GetWorkflowRequest
-from google.cloud.workflows_v1beta.types.workflows import ListWorkflowsRequest
-from google.cloud.workflows_v1beta.types.workflows import ListWorkflowsResponse
-from google.cloud.workflows_v1beta.types.workflows import OperationMetadata
-from google.cloud.workflows_v1beta.types.workflows import UpdateWorkflowRequest
-from google.cloud.workflows_v1beta.types.workflows import Workflow
+from google.cloud.workflows_v1.services.workflows.client import WorkflowsClient
+from google.cloud.workflows_v1.types.workflows import CreateWorkflowRequest
+from google.cloud.workflows_v1.types.workflows import DeleteWorkflowRequest
+from google.cloud.workflows_v1.types.workflows import GetWorkflowRequest
+from google.cloud.workflows_v1.types.workflows import ListWorkflowsRequest
+from google.cloud.workflows_v1.types.workflows import ListWorkflowsResponse
+from google.cloud.workflows_v1.types.workflows import OperationMetadata
+from google.cloud.workflows_v1.types.workflows import UpdateWorkflowRequest
+from google.cloud.workflows_v1.types.workflows import Workflow
 
 __all__ = (
     "CreateWorkflowRequest",
