@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +15,8 @@
 #
 
 from .services.workflows import WorkflowsClient
+from .services.workflows import WorkflowsAsyncClient
+
 from .types.workflows import CreateWorkflowRequest
 from .types.workflows import DeleteWorkflowRequest
 from .types.workflows import GetWorkflowRequest
@@ -24,7 +25,6 @@ from .types.workflows import ListWorkflowsResponse
 from .types.workflows import OperationMetadata
 from .types.workflows import UpdateWorkflowRequest
 from .types.workflows import Workflow
-
 
 __all__ = (
     "CreateWorkflowRequest",
