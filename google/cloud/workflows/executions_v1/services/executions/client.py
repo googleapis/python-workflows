@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 from collections import OrderedDict
 from distutils import util
 import os
@@ -33,6 +35,7 @@ from google.oauth2 import service_account  # type: ignore
 from google.cloud.workflows.executions_v1.services.executions import pagers
 from google.cloud.workflows.executions_v1.types import executions
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
+
 from .transports.base import ExecutionsTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import ExecutionsGrpcTransport
 from .transports.grpc_asyncio import ExecutionsGrpcAsyncIOTransport
@@ -376,8 +379,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
         Args:
             request (google.cloud.workflows.executions_v1.types.ListExecutionsRequest):
-                The request object.
-                Request for the
+                The request object. Request for the
                 [ListExecutions][]
                 method.
             parent (str):
@@ -389,6 +391,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -421,8 +424,10 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, executions.ListExecutionsRequest):
             request = executions.ListExecutionsRequest(request)
+
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
+
             if parent is not None:
                 request.parent = parent
 
@@ -463,8 +468,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
         Args:
             request (google.cloud.workflows.executions_v1.types.CreateExecutionRequest):
-                The request object.
-                Request for the
+                The request object. Request for the
                 [CreateExecution][google.cloud.workflows.executions.v1.Executions.CreateExecution]
                 method.
             parent (str):
@@ -483,6 +487,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
                 This corresponds to the ``execution`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -511,8 +516,10 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, executions.CreateExecutionRequest):
             request = executions.CreateExecutionRequest(request)
+
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
+
             if parent is not None:
                 request.parent = parent
             if execution is not None:
@@ -547,8 +554,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
         Args:
             request (google.cloud.workflows.executions_v1.types.GetExecutionRequest):
-                The request object.
-                Request for the
+                The request object. Request for the
                 [GetExecution][google.cloud.workflows.executions.v1.Executions.GetExecution]
                 method.
             name (str):
@@ -559,6 +565,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -587,8 +594,10 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, executions.GetExecutionRequest):
             request = executions.GetExecutionRequest(request)
+
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
+
             if name is not None:
                 request.name = name
 
@@ -621,8 +630,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
         Args:
             request (google.cloud.workflows.executions_v1.types.CancelExecutionRequest):
-                The request object.
-                Request for the
+                The request object. Request for the
                 [CancelExecution][google.cloud.workflows.executions.v1.Executions.CancelExecution]
                 method.
             name (str):
@@ -633,6 +641,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -661,8 +670,10 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, executions.CancelExecutionRequest):
             request = executions.CancelExecutionRequest(request)
+
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
+
             if name is not None:
                 request.name = name
 

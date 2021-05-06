@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +14,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 import os
 import mock
-import packaging.version
 
 import grpc
 from grpc.experimental import aio
 import math
 import pytest
 from proto.marshal.rules.dates import DurationRule, TimestampRule
-
 
 from google import auth
 from google.api_core import client_options
@@ -40,38 +40,9 @@ from google.cloud.workflows.executions_v1beta.services.executions import (
 )
 from google.cloud.workflows.executions_v1beta.services.executions import pagers
 from google.cloud.workflows.executions_v1beta.services.executions import transports
-from google.cloud.workflows.executions_v1beta.services.executions.transports.base import (
-    _API_CORE_VERSION,
-)
-from google.cloud.workflows.executions_v1beta.services.executions.transports.base import (
-    _GOOGLE_AUTH_VERSION,
-)
 from google.cloud.workflows.executions_v1beta.types import executions
 from google.oauth2 import service_account
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
-
-
-# TODO(busunkim): Once google-api-core >= 1.26.0 is required:
-# - Delete all the api-core and auth "less than" test cases
-# - Delete these pytest markers (Make the "greater than or equal to" tests the default).
-requires_google_auth_lt_1_25_0 = pytest.mark.skipif(
-    packaging.version.parse(_GOOGLE_AUTH_VERSION) >= packaging.version.parse("1.25.0"),
-    reason="This test requires google-auth < 1.25.0",
-)
-requires_google_auth_gte_1_25_0 = pytest.mark.skipif(
-    packaging.version.parse(_GOOGLE_AUTH_VERSION) < packaging.version.parse("1.25.0"),
-    reason="This test requires google-auth >= 1.25.0",
-)
-
-requires_api_core_lt_1_26_0 = pytest.mark.skipif(
-    packaging.version.parse(_API_CORE_VERSION) >= packaging.version.parse("1.26.0"),
-    reason="This test requires google-api-core < 1.26.0",
-)
-
-requires_api_core_gte_1_26_0 = pytest.mark.skipif(
-    packaging.version.parse(_API_CORE_VERSION) < packaging.version.parse("1.26.0"),
-    reason="This test requires google-api-core >= 1.26.0",
-)
 
 
 def client_cert_source_callback():
@@ -480,15 +451,19 @@ def test_list_executions(
         call.return_value = executions.ListExecutionsResponse(
             next_page_token="next_page_token_value",
         )
+
         response = client.list_executions(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.ListExecutionsRequest()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, pagers.ListExecutionsPager)
+
     assert response.next_page_token == "next_page_token_value"
 
 
@@ -508,6 +483,7 @@ def test_list_executions_empty_call():
         client.list_executions()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.ListExecutionsRequest()
 
 
@@ -529,15 +505,18 @@ async def test_list_executions_async(
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             executions.ListExecutionsResponse(next_page_token="next_page_token_value",)
         )
+
         response = await client.list_executions(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.ListExecutionsRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, pagers.ListExecutionsAsyncPager)
+
     assert response.next_page_token == "next_page_token_value"
 
 
@@ -552,12 +531,12 @@ def test_list_executions_field_headers():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = executions.ListExecutionsRequest()
-
     request.parent = "parent/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.list_executions), "__call__") as call:
         call.return_value = executions.ListExecutionsResponse()
+
         client.list_executions(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -577,7 +556,6 @@ async def test_list_executions_field_headers_async():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = executions.ListExecutionsRequest()
-
     request.parent = "parent/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -585,6 +563,7 @@ async def test_list_executions_field_headers_async():
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             executions.ListExecutionsResponse()
         )
+
         await client.list_executions(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -604,6 +583,7 @@ def test_list_executions_flattened():
     with mock.patch.object(type(client.transport.list_executions), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = executions.ListExecutionsResponse()
+
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         client.list_executions(parent="parent_value",)
@@ -612,6 +592,7 @@ def test_list_executions_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0].parent == "parent_value"
 
 
@@ -646,6 +627,7 @@ async def test_list_executions_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0].parent == "parent_value"
 
 
@@ -820,19 +802,27 @@ def test_create_execution(
             result="result_value",
             workflow_revision_id="workflow_revision_id_value",
         )
+
         response = client.create_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.CreateExecutionRequest()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, executions.Execution)
+
     assert response.name == "name_value"
+
     assert response.state == executions.Execution.State.ACTIVE
+
     assert response.argument == "argument_value"
+
     assert response.result == "result_value"
+
     assert response.workflow_revision_id == "workflow_revision_id_value"
 
 
@@ -852,6 +842,7 @@ def test_create_execution_empty_call():
         client.create_execution()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.CreateExecutionRequest()
 
 
@@ -879,19 +870,26 @@ async def test_create_execution_async(
                 workflow_revision_id="workflow_revision_id_value",
             )
         )
+
         response = await client.create_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.CreateExecutionRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, executions.Execution)
+
     assert response.name == "name_value"
+
     assert response.state == executions.Execution.State.ACTIVE
+
     assert response.argument == "argument_value"
+
     assert response.result == "result_value"
+
     assert response.workflow_revision_id == "workflow_revision_id_value"
 
 
@@ -906,12 +904,12 @@ def test_create_execution_field_headers():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = executions.CreateExecutionRequest()
-
     request.parent = "parent/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.create_execution), "__call__") as call:
         call.return_value = executions.Execution()
+
         client.create_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -931,7 +929,6 @@ async def test_create_execution_field_headers_async():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = executions.CreateExecutionRequest()
-
     request.parent = "parent/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -939,6 +936,7 @@ async def test_create_execution_field_headers_async():
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             executions.Execution()
         )
+
         await client.create_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -958,6 +956,7 @@ def test_create_execution_flattened():
     with mock.patch.object(type(client.transport.create_execution), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = executions.Execution()
+
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         client.create_execution(
@@ -968,7 +967,9 @@ def test_create_execution_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0].parent == "parent_value"
+
         assert args[0].execution == executions.Execution(name="name_value")
 
 
@@ -1007,7 +1008,9 @@ async def test_create_execution_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0].parent == "parent_value"
+
         assert args[0].execution == executions.Execution(name="name_value")
 
 
@@ -1046,19 +1049,27 @@ def test_get_execution(
             result="result_value",
             workflow_revision_id="workflow_revision_id_value",
         )
+
         response = client.get_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.GetExecutionRequest()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, executions.Execution)
+
     assert response.name == "name_value"
+
     assert response.state == executions.Execution.State.ACTIVE
+
     assert response.argument == "argument_value"
+
     assert response.result == "result_value"
+
     assert response.workflow_revision_id == "workflow_revision_id_value"
 
 
@@ -1078,6 +1089,7 @@ def test_get_execution_empty_call():
         client.get_execution()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.GetExecutionRequest()
 
 
@@ -1105,19 +1117,26 @@ async def test_get_execution_async(
                 workflow_revision_id="workflow_revision_id_value",
             )
         )
+
         response = await client.get_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.GetExecutionRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, executions.Execution)
+
     assert response.name == "name_value"
+
     assert response.state == executions.Execution.State.ACTIVE
+
     assert response.argument == "argument_value"
+
     assert response.result == "result_value"
+
     assert response.workflow_revision_id == "workflow_revision_id_value"
 
 
@@ -1132,12 +1151,12 @@ def test_get_execution_field_headers():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = executions.GetExecutionRequest()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.get_execution), "__call__") as call:
         call.return_value = executions.Execution()
+
         client.get_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1157,7 +1176,6 @@ async def test_get_execution_field_headers_async():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = executions.GetExecutionRequest()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1165,6 +1183,7 @@ async def test_get_execution_field_headers_async():
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             executions.Execution()
         )
+
         await client.get_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1184,6 +1203,7 @@ def test_get_execution_flattened():
     with mock.patch.object(type(client.transport.get_execution), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = executions.Execution()
+
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         client.get_execution(name="name_value",)
@@ -1192,6 +1212,7 @@ def test_get_execution_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0].name == "name_value"
 
 
@@ -1226,6 +1247,7 @@ async def test_get_execution_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0].name == "name_value"
 
 
@@ -1262,19 +1284,27 @@ def test_cancel_execution(
             result="result_value",
             workflow_revision_id="workflow_revision_id_value",
         )
+
         response = client.cancel_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.CancelExecutionRequest()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, executions.Execution)
+
     assert response.name == "name_value"
+
     assert response.state == executions.Execution.State.ACTIVE
+
     assert response.argument == "argument_value"
+
     assert response.result == "result_value"
+
     assert response.workflow_revision_id == "workflow_revision_id_value"
 
 
@@ -1294,6 +1324,7 @@ def test_cancel_execution_empty_call():
         client.cancel_execution()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.CancelExecutionRequest()
 
 
@@ -1321,19 +1352,26 @@ async def test_cancel_execution_async(
                 workflow_revision_id="workflow_revision_id_value",
             )
         )
+
         response = await client.cancel_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == executions.CancelExecutionRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, executions.Execution)
+
     assert response.name == "name_value"
+
     assert response.state == executions.Execution.State.ACTIVE
+
     assert response.argument == "argument_value"
+
     assert response.result == "result_value"
+
     assert response.workflow_revision_id == "workflow_revision_id_value"
 
 
@@ -1348,12 +1386,12 @@ def test_cancel_execution_field_headers():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = executions.CancelExecutionRequest()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.cancel_execution), "__call__") as call:
         call.return_value = executions.Execution()
+
         client.cancel_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1373,7 +1411,6 @@ async def test_cancel_execution_field_headers_async():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = executions.CancelExecutionRequest()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1381,6 +1418,7 @@ async def test_cancel_execution_field_headers_async():
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             executions.Execution()
         )
+
         await client.cancel_execution(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1400,6 +1438,7 @@ def test_cancel_execution_flattened():
     with mock.patch.object(type(client.transport.cancel_execution), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = executions.Execution()
+
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         client.cancel_execution(name="name_value",)
@@ -1408,6 +1447,7 @@ def test_cancel_execution_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0].name == "name_value"
 
 
@@ -1442,6 +1482,7 @@ async def test_cancel_execution_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0].name == "name_value"
 
 
@@ -1561,32 +1602,10 @@ def test_executions_base_transport():
             getattr(transport, method)(request=object())
 
 
-@requires_google_auth_gte_1_25_0
 def test_executions_base_transport_with_credentials_file():
     # Instantiate the base transport with a credentials file
     with mock.patch.object(
-        auth, "load_credentials_from_file", autospec=True
-    ) as load_creds, mock.patch(
-        "google.cloud.workflows.executions_v1beta.services.executions.transports.ExecutionsTransport._prep_wrapped_messages"
-    ) as Transport:
-        Transport.return_value = None
-        load_creds.return_value = (credentials.AnonymousCredentials(), None)
-        transport = transports.ExecutionsTransport(
-            credentials_file="credentials.json", quota_project_id="octopus",
-        )
-        load_creds.assert_called_once_with(
-            "credentials.json",
-            scopes=None,
-            default_scopes=("https://www.googleapis.com/auth/cloud-platform",),
-            quota_project_id="octopus",
-        )
-
-
-@requires_google_auth_lt_1_25_0
-def test_executions_base_transport_with_credentials_file_old_google_auth():
-    # Instantiate the base transport with a credentials file
-    with mock.patch.object(
-        auth, "load_credentials_from_file", autospec=True
+        auth, "load_credentials_from_file"
     ) as load_creds, mock.patch(
         "google.cloud.workflows.executions_v1beta.services.executions.transports.ExecutionsTransport._prep_wrapped_messages"
     ) as Transport:
@@ -1604,7 +1623,7 @@ def test_executions_base_transport_with_credentials_file_old_google_auth():
 
 def test_executions_base_transport_with_adc():
     # Test the default credentials are used if credentials and credentials_file are None.
-    with mock.patch.object(auth, "default", autospec=True) as adc, mock.patch(
+    with mock.patch.object(auth, "default") as adc, mock.patch(
         "google.cloud.workflows.executions_v1beta.services.executions.transports.ExecutionsTransport._prep_wrapped_messages"
     ) as Transport:
         Transport.return_value = None
@@ -1613,23 +1632,9 @@ def test_executions_base_transport_with_adc():
         adc.assert_called_once()
 
 
-@requires_google_auth_gte_1_25_0
 def test_executions_auth_adc():
     # If no credentials are provided, we should use ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc:
-        adc.return_value = (credentials.AnonymousCredentials(), None)
-        ExecutionsClient()
-        adc.assert_called_once_with(
-            scopes=None,
-            default_scopes=("https://www.googleapis.com/auth/cloud-platform",),
-            quota_project_id=None,
-        )
-
-
-@requires_google_auth_lt_1_25_0
-def test_executions_auth_adc_old_google_auth():
-    # If no credentials are provided, we should use ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc:
+    with mock.patch.object(auth, "default") as adc:
         adc.return_value = (credentials.AnonymousCredentials(), None)
         ExecutionsClient()
         adc.assert_called_once_with(
@@ -1638,139 +1643,17 @@ def test_executions_auth_adc_old_google_auth():
         )
 
 
-@pytest.mark.parametrize(
-    "transport_class",
-    [transports.ExecutionsGrpcTransport, transports.ExecutionsGrpcAsyncIOTransport,],
-)
-@requires_google_auth_gte_1_25_0
-def test_executions_transport_auth_adc(transport_class):
+def test_executions_transport_auth_adc():
     # If credentials and host are not provided, the transport class should use
     # ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc:
+    with mock.patch.object(auth, "default") as adc:
         adc.return_value = (credentials.AnonymousCredentials(), None)
-        transport_class(quota_project_id="octopus", scopes=["1", "2"])
-        adc.assert_called_once_with(
-            scopes=["1", "2"],
-            default_scopes=("https://www.googleapis.com/auth/cloud-platform",),
-            quota_project_id="octopus",
+        transports.ExecutionsGrpcTransport(
+            host="squid.clam.whelk", quota_project_id="octopus"
         )
-
-
-@pytest.mark.parametrize(
-    "transport_class",
-    [transports.ExecutionsGrpcTransport, transports.ExecutionsGrpcAsyncIOTransport,],
-)
-@requires_google_auth_lt_1_25_0
-def test_executions_transport_auth_adc_old_google_auth(transport_class):
-    # If credentials and host are not provided, the transport class should use
-    # ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc:
-        adc.return_value = (credentials.AnonymousCredentials(), None)
-        transport_class(quota_project_id="octopus")
         adc.assert_called_once_with(
             scopes=("https://www.googleapis.com/auth/cloud-platform",),
             quota_project_id="octopus",
-        )
-
-
-@pytest.mark.parametrize(
-    "transport_class,grpc_helpers",
-    [
-        (transports.ExecutionsGrpcTransport, grpc_helpers),
-        (transports.ExecutionsGrpcAsyncIOTransport, grpc_helpers_async),
-    ],
-)
-@requires_api_core_gte_1_26_0
-def test_executions_transport_create_channel(transport_class, grpc_helpers):
-    # If credentials and host are not provided, the transport class should use
-    # ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc, mock.patch.object(
-        grpc_helpers, "create_channel", autospec=True
-    ) as create_channel:
-        creds = credentials.AnonymousCredentials()
-        adc.return_value = (creds, None)
-        transport_class(quota_project_id="octopus", scopes=["1", "2"])
-
-        create_channel.assert_called_with(
-            "workflowexecutions.googleapis.com",
-            credentials=creds,
-            credentials_file=None,
-            quota_project_id="octopus",
-            default_scopes=("https://www.googleapis.com/auth/cloud-platform",),
-            scopes=["1", "2"],
-            default_host="workflowexecutions.googleapis.com",
-            ssl_credentials=None,
-            options=[
-                ("grpc.max_send_message_length", -1),
-                ("grpc.max_receive_message_length", -1),
-            ],
-        )
-
-
-@pytest.mark.parametrize(
-    "transport_class,grpc_helpers",
-    [
-        (transports.ExecutionsGrpcTransport, grpc_helpers),
-        (transports.ExecutionsGrpcAsyncIOTransport, grpc_helpers_async),
-    ],
-)
-@requires_api_core_lt_1_26_0
-def test_executions_transport_create_channel_old_api_core(
-    transport_class, grpc_helpers
-):
-    # If credentials and host are not provided, the transport class should use
-    # ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc, mock.patch.object(
-        grpc_helpers, "create_channel", autospec=True
-    ) as create_channel:
-        creds = credentials.AnonymousCredentials()
-        adc.return_value = (creds, None)
-        transport_class(quota_project_id="octopus")
-
-        create_channel.assert_called_with(
-            "workflowexecutions.googleapis.com",
-            credentials=creds,
-            credentials_file=None,
-            quota_project_id="octopus",
-            scopes=("https://www.googleapis.com/auth/cloud-platform",),
-            ssl_credentials=None,
-            options=[
-                ("grpc.max_send_message_length", -1),
-                ("grpc.max_receive_message_length", -1),
-            ],
-        )
-
-
-@pytest.mark.parametrize(
-    "transport_class,grpc_helpers",
-    [
-        (transports.ExecutionsGrpcTransport, grpc_helpers),
-        (transports.ExecutionsGrpcAsyncIOTransport, grpc_helpers_async),
-    ],
-)
-@requires_api_core_lt_1_26_0
-def test_executions_transport_create_channel_user_scopes(transport_class, grpc_helpers):
-    # If credentials and host are not provided, the transport class should use
-    # ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc, mock.patch.object(
-        grpc_helpers, "create_channel", autospec=True
-    ) as create_channel:
-        creds = credentials.AnonymousCredentials()
-        adc.return_value = (creds, None)
-
-        transport_class(quota_project_id="octopus", scopes=["1", "2"])
-
-        create_channel.assert_called_with(
-            "workflowexecutions.googleapis.com",
-            credentials=creds,
-            credentials_file=None,
-            quota_project_id="octopus",
-            scopes=["1", "2"],
-            ssl_credentials=None,
-            options=[
-                ("grpc.max_send_message_length", -1),
-                ("grpc.max_receive_message_length", -1),
-            ],
         )
 
 
@@ -1957,6 +1840,7 @@ def test_execution_path():
     location = "clam"
     workflow = "whelk"
     execution = "octopus"
+
     expected = "projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}".format(
         project=project, location=location, workflow=workflow, execution=execution,
     )
@@ -1982,6 +1866,7 @@ def test_workflow_path():
     project = "winkle"
     location = "nautilus"
     workflow = "scallop"
+
     expected = "projects/{project}/locations/{location}/workflows/{workflow}".format(
         project=project, location=location, workflow=workflow,
     )
@@ -2004,6 +1889,7 @@ def test_parse_workflow_path():
 
 def test_common_billing_account_path():
     billing_account = "whelk"
+
     expected = "billingAccounts/{billing_account}".format(
         billing_account=billing_account,
     )
@@ -2024,6 +1910,7 @@ def test_parse_common_billing_account_path():
 
 def test_common_folder_path():
     folder = "oyster"
+
     expected = "folders/{folder}".format(folder=folder,)
     actual = ExecutionsClient.common_folder_path(folder)
     assert expected == actual
@@ -2042,6 +1929,7 @@ def test_parse_common_folder_path():
 
 def test_common_organization_path():
     organization = "cuttlefish"
+
     expected = "organizations/{organization}".format(organization=organization,)
     actual = ExecutionsClient.common_organization_path(organization)
     assert expected == actual
@@ -2060,6 +1948,7 @@ def test_parse_common_organization_path():
 
 def test_common_project_path():
     project = "winkle"
+
     expected = "projects/{project}".format(project=project,)
     actual = ExecutionsClient.common_project_path(project)
     assert expected == actual
@@ -2079,6 +1968,7 @@ def test_parse_common_project_path():
 def test_common_location_path():
     project = "scallop"
     location = "abalone"
+
     expected = "projects/{project}/locations/{location}".format(
         project=project, location=location,
     )

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 from collections import OrderedDict
 import functools
 import re
@@ -29,6 +31,7 @@ from google.oauth2 import service_account  # type: ignore
 from google.cloud.workflows.executions_v1.services.executions import pagers
 from google.cloud.workflows.executions_v1.types import executions
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
+
 from .transports.base import ExecutionsTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import ExecutionsGrpcAsyncIOTransport
 from .client import ExecutionsClient
@@ -48,20 +51,25 @@ class ExecutionsAsyncClient:
     parse_execution_path = staticmethod(ExecutionsClient.parse_execution_path)
     workflow_path = staticmethod(ExecutionsClient.workflow_path)
     parse_workflow_path = staticmethod(ExecutionsClient.parse_workflow_path)
+
     common_billing_account_path = staticmethod(
         ExecutionsClient.common_billing_account_path
     )
     parse_common_billing_account_path = staticmethod(
         ExecutionsClient.parse_common_billing_account_path
     )
+
     common_folder_path = staticmethod(ExecutionsClient.common_folder_path)
     parse_common_folder_path = staticmethod(ExecutionsClient.parse_common_folder_path)
+
     common_organization_path = staticmethod(ExecutionsClient.common_organization_path)
     parse_common_organization_path = staticmethod(
         ExecutionsClient.parse_common_organization_path
     )
+
     common_project_path = staticmethod(ExecutionsClient.common_project_path)
     parse_common_project_path = staticmethod(ExecutionsClient.parse_common_project_path)
+
     common_location_path = staticmethod(ExecutionsClient.common_location_path)
     parse_common_location_path = staticmethod(
         ExecutionsClient.parse_common_location_path
@@ -152,6 +160,7 @@ class ExecutionsAsyncClient:
             google.auth.exceptions.MutualTlsChannelError: If mutual TLS transport
                 creation failed for any reason.
         """
+
         self._client = ExecutionsClient(
             credentials=credentials,
             transport=transport,
@@ -176,8 +185,7 @@ class ExecutionsAsyncClient:
 
         Args:
             request (:class:`google.cloud.workflows.executions_v1.types.ListExecutionsRequest`):
-                The request object.
-                Request for the
+                The request object. Request for the
                 [ListExecutions][]
                 method.
             parent (:class:`str`):
@@ -189,6 +197,7 @@ class ExecutionsAsyncClient:
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -219,6 +228,7 @@ class ExecutionsAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
+
         if parent is not None:
             request.parent = parent
 
@@ -263,8 +273,7 @@ class ExecutionsAsyncClient:
 
         Args:
             request (:class:`google.cloud.workflows.executions_v1.types.CreateExecutionRequest`):
-                The request object.
-                Request for the
+                The request object. Request for the
                 [CreateExecution][google.cloud.workflows.executions.v1.Executions.CreateExecution]
                 method.
             parent (:class:`str`):
@@ -283,6 +292,7 @@ class ExecutionsAsyncClient:
                 This corresponds to the ``execution`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -309,6 +319,7 @@ class ExecutionsAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
+
         if parent is not None:
             request.parent = parent
         if execution is not None:
@@ -347,8 +358,7 @@ class ExecutionsAsyncClient:
 
         Args:
             request (:class:`google.cloud.workflows.executions_v1.types.GetExecutionRequest`):
-                The request object.
-                Request for the
+                The request object. Request for the
                 [GetExecution][google.cloud.workflows.executions.v1.Executions.GetExecution]
                 method.
             name (:class:`str`):
@@ -359,6 +369,7 @@ class ExecutionsAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -385,6 +396,7 @@ class ExecutionsAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
+
         if name is not None:
             request.name = name
 
@@ -421,8 +433,7 @@ class ExecutionsAsyncClient:
 
         Args:
             request (:class:`google.cloud.workflows.executions_v1.types.CancelExecutionRequest`):
-                The request object.
-                Request for the
+                The request object. Request for the
                 [CancelExecution][google.cloud.workflows.executions.v1.Executions.CancelExecution]
                 method.
             name (:class:`str`):
@@ -433,6 +444,7 @@ class ExecutionsAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -459,6 +471,7 @@ class ExecutionsAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
+
         if name is not None:
             request.name = name
 
