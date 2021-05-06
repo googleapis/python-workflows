@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 from distutils import util
 import os
@@ -39,7 +37,6 @@ from google.cloud.workflows_v1beta.types import workflows
 from google.protobuf import empty_pb2 as empty  # type: ignore
 from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
-
 from .transports.base import WorkflowsTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import WorkflowsGrpcTransport
 from .transports.grpc_asyncio import WorkflowsGrpcAsyncIOTransport
@@ -363,7 +360,8 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
         Args:
             request (google.cloud.workflows_v1beta.types.ListWorkflowsRequest):
-                The request object. Request for the
+                The request object.
+                Request for the
                 [ListWorkflows][google.cloud.workflows.v1beta.Workflows.ListWorkflows]
                 method.
             parent (str):
@@ -375,7 +373,6 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -408,10 +405,8 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, workflows.ListWorkflowsRequest):
             request = workflows.ListWorkflowsRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if parent is not None:
                 request.parent = parent
 
@@ -450,7 +445,8 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
         Args:
             request (google.cloud.workflows_v1beta.types.GetWorkflowRequest):
-                The request object. Request for the
+                The request object.
+                Request for the
                 [GetWorkflow][google.cloud.workflows.v1beta.Workflows.GetWorkflow]
                 method.
             name (str):
@@ -461,7 +457,6 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -490,10 +485,8 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, workflows.GetWorkflowRequest):
             request = workflows.GetWorkflowRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
 
@@ -531,7 +524,8 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
         Args:
             request (google.cloud.workflows_v1beta.types.CreateWorkflowRequest):
-                The request object. Request for the
+                The request object.
+                Request for the
                 [CreateWorkflow][google.cloud.workflows.v1beta.Workflows.CreateWorkflow]
                 method.
             parent (str):
@@ -563,7 +557,6 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
                 This corresponds to the ``workflow_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -595,10 +588,8 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, workflows.CreateWorkflowRequest):
             request = workflows.CreateWorkflowRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if parent is not None:
                 request.parent = parent
             if workflow is not None:
@@ -645,7 +636,8 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
         Args:
             request (google.cloud.workflows_v1beta.types.DeleteWorkflowRequest):
-                The request object. Request for the
+                The request object.
+                Request for the
                 [DeleteWorkflow][google.cloud.workflows.v1beta.Workflows.DeleteWorkflow]
                 method.
             name (str):
@@ -656,7 +648,6 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -698,10 +689,8 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, workflows.DeleteWorkflowRequest):
             request = workflows.DeleteWorkflowRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
 
@@ -748,7 +737,8 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
         Args:
             request (google.cloud.workflows_v1beta.types.UpdateWorkflowRequest):
-                The request object. Request for the
+                The request object.
+                Request for the
                 [UpdateWorkflow][google.cloud.workflows.v1beta.Workflows.UpdateWorkflow]
                 method.
             workflow (google.cloud.workflows_v1beta.types.Workflow):
@@ -764,7 +754,6 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -796,10 +785,8 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, workflows.UpdateWorkflowRequest):
             request = workflows.UpdateWorkflowRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if workflow is not None:
                 request.workflow = workflow
             if update_mask is not None:

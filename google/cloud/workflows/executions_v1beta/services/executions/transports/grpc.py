@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 import warnings
-from typing import Callable, Dict, Optional, Sequence, Tuple
+from typing import Callable, Dict, Optional, Sequence, Tuple, Union
 
 from google.api_core import grpc_helpers  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
@@ -27,7 +25,6 @@ from google.auth.transport.grpc import SslCredentials  # type: ignore
 import grpc  # type: ignore
 
 from google.cloud.workflows.executions_v1beta.types import executions
-
 from .base import ExecutionsTransport, DEFAULT_CLIENT_INFO
 
 
@@ -66,7 +63,8 @@ class ExecutionsGrpcTransport(ExecutionsTransport):
         """Instantiate the transport.
 
         Args:
-            host (Optional[str]): The hostname to connect to.
+            host (Optional[str]):
+                 The hostname to connect to.
             credentials (Optional[google.auth.credentials.Credentials]): The
                 authorization credentials to attach to requests. These
                 credentials identify the application to the service; if none
@@ -207,13 +205,15 @@ class ExecutionsGrpcTransport(ExecutionsTransport):
             google.api_core.exceptions.DuplicateCredentialArgs: If both ``credentials``
               and ``credentials_file`` are passed.
         """
-        scopes = scopes or cls.AUTH_SCOPES
+
+        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
+
         return grpc_helpers.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
-            scopes=scopes,
             quota_project_id=quota_project_id,
+            **self_signed_jwt_kwargs,
             **kwargs,
         )
 
@@ -229,7 +229,9 @@ class ExecutionsGrpcTransport(ExecutionsTransport):
     ) -> Callable[
         [executions.ListExecutionsRequest], executions.ListExecutionsResponse
     ]:
-        r"""Return a callable for the list executions method over gRPC.
+        r"""Return a callable for the
+        list executions
+          method over gRPC.
 
         Returns a list of executions which belong to the
         workflow with the given name. The method returns
@@ -259,7 +261,9 @@ class ExecutionsGrpcTransport(ExecutionsTransport):
     def create_execution(
         self,
     ) -> Callable[[executions.CreateExecutionRequest], executions.Execution]:
-        r"""Return a callable for the create execution method over gRPC.
+        r"""Return a callable for the
+        create execution
+          method over gRPC.
 
         Creates a new execution using the latest revision of
         the given workflow.
@@ -286,7 +290,9 @@ class ExecutionsGrpcTransport(ExecutionsTransport):
     def get_execution(
         self,
     ) -> Callable[[executions.GetExecutionRequest], executions.Execution]:
-        r"""Return a callable for the get execution method over gRPC.
+        r"""Return a callable for the
+        get execution
+          method over gRPC.
 
         Returns an execution of the given name.
 
@@ -312,7 +318,9 @@ class ExecutionsGrpcTransport(ExecutionsTransport):
     def cancel_execution(
         self,
     ) -> Callable[[executions.CancelExecutionRequest], executions.Execution]:
-        r"""Return a callable for the cancel execution method over gRPC.
+        r"""Return a callable for the
+        cancel execution
+          method over gRPC.
 
         Cancels an execution of the given name.
 
