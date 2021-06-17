@@ -27,7 +27,11 @@ readme_filename = os.path.join(package_root, "README.rst")
 with io.open(readme_filename, encoding="utf-8") as readme_file:
     readme = readme_file.read()
 
-packages = [package for package in setuptools.PEP420PackageFinder.find() if package.startswith('google')]
+packages = [
+    package
+    for package in setuptools.PEP420PackageFinder.find()
+    if package.startswith("google")
+]
 
 setuptools.setup(
     name="google-cloud-workflows",
