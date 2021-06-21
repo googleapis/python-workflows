@@ -1,5 +1,17 @@
 # Changelog
 
+### [1.1.1](https://www.github.com/googleapis/python-workflows/compare/v1.1.0...v1.1.1) (2021-06-21)
+
+
+### Bug Fixes
+
+* exclude docs and tests from package ([#63](https://www.github.com/googleapis/python-workflows/issues/63)) ([ff68d16](https://www.github.com/googleapis/python-workflows/commit/ff68d16bb68960dbee188771f6f334ab69a98b23))
+
+
+### Documentation
+
+* omit mention of Python 2.7 in 'CONTRIBUTING.rst' ([#1127](https://www.github.com/googleapis/python-workflows/issues/1127)) ([#65](https://www.github.com/googleapis/python-workflows/issues/65)) ([10341d6](https://www.github.com/googleapis/python-workflows/commit/10341d6b7adf284507d5f99dc68bae34e4360be9))
+
 ## [1.1.0](https://www.github.com/googleapis/python-workflows/compare/v1.0.0...v1.1.0) (2021-06-16)
 
 
