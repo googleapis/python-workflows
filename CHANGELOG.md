@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.2.1](https://www.github.com/googleapis/python-workflows/compare/v1.2.0...v1.2.1) (2021-07-20)
+
+
+### Bug Fixes
+
+* **deps:** pin 'google-{api,cloud}-core', 'google-auth' to allow 2.x versions ([#75](https://www.github.com/googleapis/python-workflows/issues/75)) ([cd2684f](https://www.github.com/googleapis/python-workflows/commit/cd2684fd73e7bf68ce413370aec5819a9c5e35a1))
+
 ## [1.2.0](https://www.github.com/googleapis/python-workflows/compare/v1.1.0...v1.2.0) (2021-07-01)
 
 
