@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -470,7 +470,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud.workflows import executions_v1beta
+                    from google.cloud.workflows import executions_v1beta
 
             def sample_list_executions():
                 # Create a client
@@ -585,7 +585,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud.workflows import executions_v1beta
+                    from google.cloud.workflows import executions_v1beta
 
             def sample_create_execution():
                 # Create a client
@@ -692,7 +692,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud.workflows import executions_v1beta
+                    from google.cloud.workflows import executions_v1beta
 
             def sample_get_execution():
                 # Create a client
@@ -789,7 +789,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud.workflows import executions_v1beta
+                    from google.cloud.workflows import executions_v1beta
 
             def sample_cancel_execution():
                 # Create a client

@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -447,7 +447,7 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import workflows_v1beta
+                    from google.cloud import workflows_v1beta
 
             def sample_list_workflows():
                 # Create a client
@@ -559,7 +559,7 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import workflows_v1beta
+                    from google.cloud import workflows_v1beta
 
             def sample_get_workflow():
                 # Create a client
@@ -662,7 +662,7 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import workflows_v1beta
+                    from google.cloud import workflows_v1beta
 
             def sample_create_workflow():
                 # Create a client
@@ -807,7 +807,7 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import workflows_v1beta
+                    from google.cloud import workflows_v1beta
 
             def sample_delete_workflow():
                 # Create a client
@@ -936,7 +936,7 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import workflows_v1beta
+                    from google.cloud import workflows_v1beta
 
             def sample_update_workflow():
                 # Create a client
