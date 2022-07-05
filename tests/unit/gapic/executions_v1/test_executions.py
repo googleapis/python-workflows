@@ -2073,7 +2073,6 @@ def test_executions_transport_auth_adc(transport_class):
     [
         transports.ExecutionsGrpcTransport,
         transports.ExecutionsGrpcAsyncIOTransport,
-        transports.ExecutionsRestTransport,
     ],
 )
 def test_executions_transport_auth_gdch_credentials(transport_class):

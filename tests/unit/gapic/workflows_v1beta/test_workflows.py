@@ -2270,7 +2270,6 @@ def test_workflows_transport_auth_adc(transport_class):
     [
         transports.WorkflowsGrpcTransport,
         transports.WorkflowsGrpcAsyncIOTransport,
-        transports.WorkflowsRestTransport,
     ],
 )
 def test_workflows_transport_auth_gdch_credentials(transport_class):
