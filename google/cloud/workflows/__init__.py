@@ -13,6 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from google.cloud.workflows import gapic_version as package_version
+
+__version__ = package_version.__version__
+
 
 from google.cloud.workflows_v1.services.workflows.client import WorkflowsClient
 from google.cloud.workflows_v1.services.workflows.async_client import (
