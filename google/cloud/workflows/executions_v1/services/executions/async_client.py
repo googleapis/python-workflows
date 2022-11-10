@@ -16,7 +16,17 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+)
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -157,9 +167,9 @@ class ExecutionsAsyncClient:
     def __init__(
         self,
         *,
-        credentials: ga_credentials.Credentials = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, ExecutionsTransport] = "grpc_asyncio",
-        client_options: ClientOptions = None,
+        client_options: Optional[ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiates the executions client.
@@ -203,11 +213,11 @@ class ExecutionsAsyncClient:
 
     async def list_executions(
         self,
-        request: Union[executions.ListExecutionsRequest, dict] = None,
+        request: Optional[Union[executions.ListExecutionsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListExecutionsAsyncPager:
         r"""Returns a list of executions which belong to the
@@ -244,7 +254,7 @@ class ExecutionsAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.workflows.executions_v1.types.ListExecutionsRequest, dict]):
+            request (Optional[Union[google.cloud.workflows.executions_v1.types.ListExecutionsRequest, dict]]):
                 The request object. Request for the
                 [ListExecutions][]
                 method.
@@ -326,12 +336,12 @@ class ExecutionsAsyncClient:
 
     async def create_execution(
         self,
-        request: Union[executions.CreateExecutionRequest, dict] = None,
+        request: Optional[Union[executions.CreateExecutionRequest, dict]] = None,
         *,
-        parent: str = None,
-        execution: executions.Execution = None,
+        parent: Optional[str] = None,
+        execution: Optional[executions.Execution] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> executions.Execution:
         r"""Creates a new execution using the latest revision of
@@ -364,7 +374,7 @@ class ExecutionsAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.workflows.executions_v1.types.CreateExecutionRequest, dict]):
+            request (Optional[Union[google.cloud.workflows.executions_v1.types.CreateExecutionRequest, dict]]):
                 The request object. Request for the
                 [CreateExecution][google.cloud.workflows.executions.v1.Executions.CreateExecution]
                 method.
@@ -442,11 +452,11 @@ class ExecutionsAsyncClient:
 
     async def get_execution(
         self,
-        request: Union[executions.GetExecutionRequest, dict] = None,
+        request: Optional[Union[executions.GetExecutionRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> executions.Execution:
         r"""Returns an execution of the given name.
@@ -478,7 +488,7 @@ class ExecutionsAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.workflows.executions_v1.types.GetExecutionRequest, dict]):
+            request (Optional[Union[google.cloud.workflows.executions_v1.types.GetExecutionRequest, dict]]):
                 The request object. Request for the
                 [GetExecution][google.cloud.workflows.executions.v1.Executions.GetExecution]
                 method.
@@ -546,11 +556,11 @@ class ExecutionsAsyncClient:
 
     async def cancel_execution(
         self,
-        request: Union[executions.CancelExecutionRequest, dict] = None,
+        request: Optional[Union[executions.CancelExecutionRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> executions.Execution:
         r"""Cancels an execution of the given name.
@@ -582,7 +592,7 @@ class ExecutionsAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.workflows.executions_v1.types.CancelExecutionRequest, dict]):
+            request (Optional[Union[google.cloud.workflows.executions_v1.types.CancelExecutionRequest, dict]]):
                 The request object. Request for the
                 [CancelExecution][google.cloud.workflows.executions.v1.Executions.CancelExecution]
                 method.

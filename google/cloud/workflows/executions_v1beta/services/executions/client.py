@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -56,7 +67,7 @@ class ExecutionsClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[ExecutionsTransport]:
         """Returns an appropriate transport class.
 
@@ -358,7 +369,7 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, ExecutionsTransport, None] = None,
+        transport: Optional[Union[str, ExecutionsTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -456,11 +467,11 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
     def list_executions(
         self,
-        request: Union[executions.ListExecutionsRequest, dict] = None,
+        request: Optional[Union[executions.ListExecutionsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListExecutionsPager:
         r"""Returns a list of executions which belong to the
@@ -579,12 +590,12 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
     def create_execution(
         self,
-        request: Union[executions.CreateExecutionRequest, dict] = None,
+        request: Optional[Union[executions.CreateExecutionRequest, dict]] = None,
         *,
-        parent: str = None,
-        execution: executions.Execution = None,
+        parent: Optional[str] = None,
+        execution: Optional[executions.Execution] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> executions.Execution:
         r"""Creates a new execution using the latest revision of
@@ -695,11 +706,11 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
     def get_execution(
         self,
-        request: Union[executions.GetExecutionRequest, dict] = None,
+        request: Optional[Union[executions.GetExecutionRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> executions.Execution:
         r"""Returns an execution of the given name.
@@ -799,11 +810,11 @@ class ExecutionsClient(metaclass=ExecutionsClientMeta):
 
     def cancel_execution(
         self,
-        request: Union[executions.CancelExecutionRequest, dict] = None,
+        request: Optional[Union[executions.CancelExecutionRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> executions.Execution:
         r"""Cancels an execution of the given name.

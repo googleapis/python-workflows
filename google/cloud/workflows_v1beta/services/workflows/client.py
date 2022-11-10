@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -60,7 +71,7 @@ class WorkflowsClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[WorkflowsTransport]:
         """Returns an appropriate transport class.
 
@@ -338,7 +349,7 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, WorkflowsTransport, None] = None,
+        transport: Optional[Union[str, WorkflowsTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -436,11 +447,11 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
     def list_workflows(
         self,
-        request: Union[workflows.ListWorkflowsRequest, dict] = None,
+        request: Optional[Union[workflows.ListWorkflowsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListWorkflowsPager:
         r"""Lists Workflows in a given project and location.
@@ -556,11 +567,11 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
     def get_workflow(
         self,
-        request: Union[workflows.GetWorkflowRequest, dict] = None,
+        request: Optional[Union[workflows.GetWorkflowRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> workflows.Workflow:
         r"""Gets details of a single Workflow.
@@ -660,13 +671,13 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
     def create_workflow(
         self,
-        request: Union[workflows.CreateWorkflowRequest, dict] = None,
+        request: Optional[Union[workflows.CreateWorkflowRequest, dict]] = None,
         *,
-        parent: str = None,
-        workflow: workflows.Workflow = None,
-        workflow_id: str = None,
+        parent: Optional[str] = None,
+        workflow: Optional[workflows.Workflow] = None,
+        workflow_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Creates a new workflow. If a workflow with the specified name
@@ -814,11 +825,11 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
     def delete_workflow(
         self,
-        request: Union[workflows.DeleteWorkflowRequest, dict] = None,
+        request: Optional[Union[workflows.DeleteWorkflowRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Deletes a workflow with the specified name.
@@ -942,12 +953,12 @@ class WorkflowsClient(metaclass=WorkflowsClientMeta):
 
     def update_workflow(
         self,
-        request: Union[workflows.UpdateWorkflowRequest, dict] = None,
+        request: Optional[Union[workflows.UpdateWorkflowRequest, dict]] = None,
         *,
-        workflow: workflows.Workflow = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        workflow: Optional[workflows.Workflow] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Updates an existing workflow.
