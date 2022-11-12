@@ -8,6 +8,11 @@
         "google/cloud/workflows/gapic_version.py",
         {
           "type": "json",
+          "path": "samples/generated_samples/snippet_metadata_google.cloud.workflows.v1beta.json",
+          "jsonpath": "$.clientLibrary.version"
+        },
+        {
+          "type": "json",
           "path": "samples/generated_samples/snippet_metadata_executions_v1.json",
           "jsonpath": "$.clientLibrary.version"
         },
@@ -18,12 +23,27 @@
         },
         {
           "type": "json",
+          "path": "samples/generated_samples/snippet_metadata_google.cloud.workflows.executions.v1beta.json",
+          "jsonpath": "$.clientLibrary.version"
+        },
+        {
+          "type": "json",
+          "path": "samples/generated_samples/snippet_metadata_google.cloud.workflows.v1.json",
+          "jsonpath": "$.clientLibrary.version"
+        },
+        {
+          "type": "json",
           "path": "samples/generated_samples/snippet_metadata_workflows_v1beta.json",
           "jsonpath": "$.clientLibrary.version"
         },
         {
           "type": "json",
           "path": "samples/generated_samples/snippet_metadata_workflows_v1.json",
+          "jsonpath": "$.clientLibrary.version"
+        },
+        {
+          "type": "json",
+          "path": "samples/generated_samples/snippet_metadata_google.cloud.workflows.executions.v1.json",
           "jsonpath": "$.clientLibrary.version"
         }
       ]
