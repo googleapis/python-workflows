@@ -18,16 +18,16 @@ from google.cloud.workflows.executions import gapic_version as package_version
 __version__ = package_version.__version__
 
 
-from .services.executions import ExecutionsClient
-from .services.executions import ExecutionsAsyncClient
-
-from .types.executions import CancelExecutionRequest
-from .types.executions import CreateExecutionRequest
-from .types.executions import Execution
-from .types.executions import GetExecutionRequest
-from .types.executions import ListExecutionsRequest
-from .types.executions import ListExecutionsResponse
-from .types.executions import ExecutionView
+from .services.executions import ExecutionsAsyncClient, ExecutionsClient
+from .types.executions import (
+    CancelExecutionRequest,
+    CreateExecutionRequest,
+    Execution,
+    ExecutionView,
+    GetExecutionRequest,
+    ListExecutionsRequest,
+    ListExecutionsResponse,
+)
 
 __all__ = (
     "ExecutionsAsyncClient",
