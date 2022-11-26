@@ -30,7 +30,7 @@ from google.cloud.workflows.executions_v1.types import executions
 try:
     DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution(
-            "google-cloud-workflow",
+            "google-cloud-workflows",
         ).version,
     )
 except pkg_resources.DistributionNotFound:
