@@ -14,25 +14,27 @@
 # limitations under the License.
 #
 
-from google.auth.transport.requests import AuthorizedSession  # type: ignore
-import json  # type: ignore
-import grpc  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth import credentials as ga_credentials  # type: ignore
-from google.api_core import exceptions as core_exceptions
-from google.api_core import retry as retries
-from google.api_core import rest_helpers
-from google.api_core import rest_streaming
-from google.api_core import path_template
-from google.api_core import gapic_v1
-
-from google.protobuf import json_format
-from google.api_core import operations_v1
-from requests import __version__ as requests_version
 import dataclasses
+import json  # type: ignore
 import re
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
+
+from google.api_core import (
+    gapic_v1,
+    operations_v1,
+    path_template,
+    rest_helpers,
+    rest_streaming,
+)
+from google.api_core import exceptions as core_exceptions
+from google.api_core import retry as retries
+from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
+from google.auth.transport.requests import AuthorizedSession  # type: ignore
+from google.protobuf import json_format
+import grpc  # type: ignore
+from requests import __version__ as requests_version
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -40,11 +42,12 @@ except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
 
-from google.cloud.workflows_v1.types import workflows
 from google.longrunning import operations_pb2  # type: ignore
 
-from .base import WorkflowsTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from google.cloud.workflows_v1.types import workflows
 
+from .base import DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from .base import WorkflowsTransport
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     gapic_version=BASE_DEFAULT_CLIENT_INFO.gapic_version,
@@ -113,7 +116,12 @@ class WorkflowsRestInterceptor:
 
 
     """
-    def pre_create_workflow(self, request: workflows.CreateWorkflowRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[workflows.CreateWorkflowRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_workflow(
+        self,
+        request: workflows.CreateWorkflowRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[workflows.CreateWorkflowRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_workflow
 
         Override in a subclass to manipulate the request or metadata
@@ -121,7 +129,9 @@ class WorkflowsRestInterceptor:
         """
         return request, metadata
 
-    def post_create_workflow(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_create_workflow(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for create_workflow
 
         Override in a subclass to manipulate the response
@@ -129,7 +139,12 @@ class WorkflowsRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_workflow(self, request: workflows.DeleteWorkflowRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[workflows.DeleteWorkflowRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_delete_workflow(
+        self,
+        request: workflows.DeleteWorkflowRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[workflows.DeleteWorkflowRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for delete_workflow
 
         Override in a subclass to manipulate the request or metadata
@@ -137,7 +152,9 @@ class WorkflowsRestInterceptor:
         """
         return request, metadata
 
-    def post_delete_workflow(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_delete_workflow(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for delete_workflow
 
         Override in a subclass to manipulate the response
@@ -145,7 +162,10 @@ class WorkflowsRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_workflow(self, request: workflows.GetWorkflowRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[workflows.GetWorkflowRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_workflow(
+        self, request: workflows.GetWorkflowRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[workflows.GetWorkflowRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_workflow
 
         Override in a subclass to manipulate the request or metadata
@@ -161,7 +181,12 @@ class WorkflowsRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_workflows(self, request: workflows.ListWorkflowsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[workflows.ListWorkflowsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_workflows(
+        self,
+        request: workflows.ListWorkflowsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[workflows.ListWorkflowsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_workflows
 
         Override in a subclass to manipulate the request or metadata
@@ -169,7 +194,9 @@ class WorkflowsRestInterceptor:
         """
         return request, metadata
 
-    def post_list_workflows(self, response: workflows.ListWorkflowsResponse) -> workflows.ListWorkflowsResponse:
+    def post_list_workflows(
+        self, response: workflows.ListWorkflowsResponse
+    ) -> workflows.ListWorkflowsResponse:
         """Post-rpc interceptor for list_workflows
 
         Override in a subclass to manipulate the response
@@ -177,7 +204,12 @@ class WorkflowsRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_update_workflow(self, request: workflows.UpdateWorkflowRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[workflows.UpdateWorkflowRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_update_workflow(
+        self,
+        request: workflows.UpdateWorkflowRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[workflows.UpdateWorkflowRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for update_workflow
 
         Override in a subclass to manipulate the request or metadata
@@ -185,7 +217,9 @@ class WorkflowsRestInterceptor:
         """
         return request, metadata
 
-    def post_update_workflow(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_update_workflow(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for update_workflow
 
         Override in a subclass to manipulate the response
@@ -217,20 +251,21 @@ class WorkflowsRestTransport(WorkflowsTransport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'workflows.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[WorkflowsRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "workflows.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[WorkflowsRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -269,7 +304,9 @@ class WorkflowsRestTransport(WorkflowsTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -280,10 +317,11 @@ class WorkflowsRestTransport(WorkflowsTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         self._operations_client: Optional[operations_v1.AbstractOperationsClient] = None
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
@@ -299,18 +337,20 @@ class WorkflowsRestTransport(WorkflowsTransport):
         """
         # Only create a new client if we do not already have one.
         if self._operations_client is None:
-            http_options: Dict[str, List[Dict[str, str]]] = {
-            }
+            http_options: Dict[str, List[Dict[str, str]]] = {}
 
             rest_transport = operations_v1.OperationsRestTransport(
-                    host=self._host,
-                    # use the credentials which are saved
-                    credentials=self._credentials,
-                    scopes=self._scopes,
-                    http_options=http_options,
-                    path_prefix="v1")
+                host=self._host,
+                # use the credentials which are saved
+                credentials=self._credentials,
+                scopes=self._scopes,
+                http_options=http_options,
+                path_prefix="v1",
+            )
 
-            self._operations_client = operations_v1.AbstractOperationsClient(transport=rest_transport)
+            self._operations_client = operations_v1.AbstractOperationsClient(
+                transport=rest_transport
+            )
 
         # Return the client from cache.
         return self._operations_client
@@ -319,19 +359,26 @@ class WorkflowsRestTransport(WorkflowsTransport):
         def __hash__(self):
             return hash("CreateWorkflow")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "workflowId" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "workflowId": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: workflows.CreateWorkflowRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: workflows.CreateWorkflowRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the create workflow method over HTTP.
 
             Args:
@@ -354,11 +401,12 @@ class WorkflowsRestTransport(WorkflowsTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*/locations/*}/workflows',
-                'body': 'workflow',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*/locations/*}/workflows",
+                    "body": "workflow",
+                },
             ]
             request, metadata = self._interceptor.pre_create_workflow(request, metadata)
             pb_request = workflows.CreateWorkflowRequest.pb(request)
@@ -367,33 +415,35 @@ class WorkflowsRestTransport(WorkflowsTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -410,19 +460,24 @@ class WorkflowsRestTransport(WorkflowsTransport):
         def __hash__(self):
             return hash("DeleteWorkflow")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: workflows.DeleteWorkflowRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: workflows.DeleteWorkflowRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the delete workflow method over HTTP.
 
             Args:
@@ -445,37 +500,40 @@ class WorkflowsRestTransport(WorkflowsTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1/{name=projects/*/locations/*/workflows/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=projects/*/locations/*/workflows/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_delete_workflow(request, metadata)
             pb_request = workflows.DeleteWorkflowRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -492,19 +550,24 @@ class WorkflowsRestTransport(WorkflowsTransport):
         def __hash__(self):
             return hash("GetWorkflow")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: workflows.GetWorkflowRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> workflows.Workflow:
+        def __call__(
+            self,
+            request: workflows.GetWorkflowRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> workflows.Workflow:
             r"""Call the get workflow method over HTTP.
 
             Args:
@@ -526,37 +589,40 @@ class WorkflowsRestTransport(WorkflowsTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*/workflows/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/workflows/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_workflow(request, metadata)
             pb_request = workflows.GetWorkflowRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -575,19 +641,24 @@ class WorkflowsRestTransport(WorkflowsTransport):
         def __hash__(self):
             return hash("ListWorkflows")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: workflows.ListWorkflowsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> workflows.ListWorkflowsResponse:
+        def __call__(
+            self,
+            request: workflows.ListWorkflowsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> workflows.ListWorkflowsResponse:
             r"""Call the list workflows method over HTTP.
 
             Args:
@@ -610,37 +681,40 @@ class WorkflowsRestTransport(WorkflowsTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*/locations/*}/workflows',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*/locations/*}/workflows",
+                },
             ]
             request, metadata = self._interceptor.pre_list_workflows(request, metadata)
             pb_request = workflows.ListWorkflowsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -659,19 +733,24 @@ class WorkflowsRestTransport(WorkflowsTransport):
         def __hash__(self):
             return hash("UpdateWorkflow")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: workflows.UpdateWorkflowRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: workflows.UpdateWorkflowRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the update workflow method over HTTP.
 
             Args:
@@ -694,11 +773,12 @@ class WorkflowsRestTransport(WorkflowsTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'patch',
-                'uri': '/v1/{workflow.name=projects/*/locations/*/workflows/*}',
-                'body': 'workflow',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "patch",
+                    "uri": "/v1/{workflow.name=projects/*/locations/*/workflows/*}",
+                    "body": "workflow",
+                },
             ]
             request, metadata = self._interceptor.pre_update_workflow(request, metadata)
             pb_request = workflows.UpdateWorkflowRequest.pb(request)
@@ -707,33 +787,35 @@ class WorkflowsRestTransport(WorkflowsTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -747,44 +829,44 @@ class WorkflowsRestTransport(WorkflowsTransport):
             return resp
 
     @property
-    def create_workflow(self) -> Callable[
-            [workflows.CreateWorkflowRequest],
-            operations_pb2.Operation]:
+    def create_workflow(
+        self,
+    ) -> Callable[[workflows.CreateWorkflowRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateWorkflow(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateWorkflow(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def delete_workflow(self) -> Callable[
-            [workflows.DeleteWorkflowRequest],
-            operations_pb2.Operation]:
+    def delete_workflow(
+        self,
+    ) -> Callable[[workflows.DeleteWorkflowRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteWorkflow(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteWorkflow(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_workflow(self) -> Callable[
-            [workflows.GetWorkflowRequest],
-            workflows.Workflow]:
+    def get_workflow(
+        self,
+    ) -> Callable[[workflows.GetWorkflowRequest], workflows.Workflow]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetWorkflow(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetWorkflow(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_workflows(self) -> Callable[
-            [workflows.ListWorkflowsRequest],
-            workflows.ListWorkflowsResponse]:
+    def list_workflows(
+        self,
+    ) -> Callable[[workflows.ListWorkflowsRequest], workflows.ListWorkflowsResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListWorkflows(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListWorkflows(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_workflow(self) -> Callable[
-            [workflows.UpdateWorkflowRequest],
-            operations_pb2.Operation]:
+    def update_workflow(
+        self,
+    ) -> Callable[[workflows.UpdateWorkflowRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateWorkflow(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateWorkflow(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def kind(self) -> str:
@@ -794,6 +876,4 @@ class WorkflowsRestTransport(WorkflowsTransport):
         self._session.close()
 
 
-__all__=(
-    'WorkflowsRestTransport',
-)
+__all__ = ("WorkflowsRestTransport",)
